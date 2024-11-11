@@ -7,10 +7,8 @@ export const getAllClients = async (
 	res: Response
 ): Promise<Response> => {
 	try {
-		const clients = await Client.find({}); // Fetches all clients
-		// console.log(clients[4])
-
-		return res.json(clients); // Sends the clients as a JSON response
+		const clients = await Client.find({});
+		return res.json(clients);
 	} catch (error) {
 		return res.status(500).json({ message: "Server error", error });
 	}
@@ -48,7 +46,6 @@ export const getClientForm = async (req: Request, res: Response) => {
 
 		const formConfigObj = currIndustryFormConfig.toObject();
 		const steps = formConfigObj.steps;
-		console.log(steps);
 		const additionalFields = client.additionalFields || {};
 
 		const result = steps.map((step, i) => {
@@ -70,16 +67,18 @@ export const getClientForm = async (req: Request, res: Response) => {
 
 		res.json(response);
 	} catch (error) {
-		console.error("Error in getClientForm:", error);
 		res.status(500).json({ message: "Internal server error" });
 	}
 };
 
-// Handle form submission
+/**
+ * This will handle form submissions and after-submission tasks like
+ * sending emails, sending data to a database, creating contacts in CRM, etc.
+ */
 export const submitForm = async (req: Request, res: Response) => {
 	try {
 		const formData = req.body;
-		// Logic to handle form submission
+		// TODO: Logic to handle form submission
 		return res.json({
 			message: "Form submitted successfully",
 			data: formData,
