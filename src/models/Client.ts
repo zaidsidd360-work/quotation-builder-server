@@ -20,7 +20,7 @@ const clientSchema = new Schema<ClientDocument>(
 		bgColor: { type: String },
 		textColor: { type: String },
 		additionalFields: {
-			type: Object, // Changed from Map to Object
+			type: Object,
 			default: {},
 		},
 	},

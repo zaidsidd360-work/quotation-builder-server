@@ -8,14 +8,14 @@ dotenv.config();
 
 const app = express();
 
-// Connect to MongoDB
+// Connect to DB
 connectDB();
 
 app.use(cors({ origin: "http://localhost:5173" }));
 // Middleware
-app.use(express.json()); // Parse JSON request bodies
+app.use(express.json());
 
-// Define routes
+// Routes
 app.use("/api/forms", formRoutes);
 
 // Start the server

@@ -36,7 +36,7 @@ const formStepSchema = new Schema<FormStep>({
 const formConfigSchema = new Schema<FormConfigDocument>(
 	{
 		industry: { type: String, required: true },
-		steps: { type: [formStepSchema], required: true }, // Array of FormSteps for the multistep form
+		steps: { type: [formStepSchema], required: true },
 	},
 	{ timestamps: true }
 );
